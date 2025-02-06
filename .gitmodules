@@ -1,0 +1,3 @@
+[submodule "ethglobal_agents_avs_contracts"]
+	path = ethglobal_agents_avs_contracts
+	url = git@github.com:sushmitsarmah/ethglobal_agents_avs_contracts.git
