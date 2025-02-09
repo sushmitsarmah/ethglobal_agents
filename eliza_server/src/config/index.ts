@@ -1,7 +1,5 @@
 
-import { Character, ModelProviderName, settings, validateCharacterConfig } from "@elizaos/core";
-import fs from "fs";
-import path from "path";
+import { Character, ModelProviderName, settings } from "@elizaos/core";
 import yargs from "yargs";
 
 export function parseArguments(): {
@@ -23,37 +21,6 @@ export function parseArguments(): {
     console.error("Error parsing arguments:", error);
     return {};
   }
-}
-
-export async function loadCharacters(
-  charactersArg: string
-): Promise<Character[]> {
-  let characterPaths = charactersArg?.split(",").map((filePath) => {
-    if (path.basename(filePath) === filePath) {
-      filePath = "../characters/" + filePath;
-    }
-    return path.resolve(process.cwd(), filePath.trim());
-  });
-
-  const loadedCharacters = [];
-
-  if (characterPaths?.length > 0) {
-    for (const path of characterPaths) {
-      try {
-        const character = JSON.parse(fs.readFileSync(path, "utf8"));
-
-        validateCharacterConfig(character);
-
-        loadedCharacters.push(character);
-      } catch (e) {
-        console.error(`Error loading character from ${path}: ${e}`);
-        // don't continue to load if a specified file is not found
-        process.exit(1);
-      }
-    }
-  }
-
-  return loadedCharacters;
 }
 
 export function getTokenForProvider(

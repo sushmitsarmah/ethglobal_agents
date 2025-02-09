@@ -19,9 +19,13 @@ import { startChat } from "./chat/index.ts";
 import { initializeClients } from "./clients/index.ts";
 import {
   getTokenForProvider,
-  loadCharacters,
   parseArguments,
 } from "./config/index.ts";
+
+// import loadCharacters from "./config/loadCharacters.ts";
+import loadCharactersNillion from "./config/loadCharactersNillion.ts";
+
+
 import { initializeDatabase } from "./database/index.ts";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -136,7 +140,7 @@ const startAgents = async () => {
 
   console.log("charactersArg", charactersArg);
   if (charactersArg) {
-    characters = await loadCharacters(charactersArg);
+    characters = await loadCharactersNillion(charactersArg);
   }
   console.log("characters", characters);
   try {
