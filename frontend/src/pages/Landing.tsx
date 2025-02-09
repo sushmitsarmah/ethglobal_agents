@@ -1,5 +1,6 @@
 import { Brain, BarChart3, Users, ArrowRight, Github, Twitter } from 'lucide-react';
 import { useNavigate } from 'react-router';
+import { WalletDefault } from '@coinbase/onchainkit/wallet';
 
 const Landing = () => {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Landing = () => {
                     <span className="text-2xl font-bold">PelicanTrade</span>
                 </div>
                 <div className="flex items-center space-x-8">
+                    <WalletDefault />
                     <a href="#features" className="hover:text-[#0DFDD7] transition-colors">Features</a>
                     <a href="#how-it-works" className="hover:text-[#0DFDD7] transition-colors">How it Works</a>
                     <button onClick={launchApp} className="bg-[#0DFDD7] text-[#011627] px-6 py-2 rounded-lg font-semibold hover:bg-[#0DFDD7]/90 transition-colors">
@@ -56,6 +58,9 @@ const Landing = () => {
                             />
                         </div>
                     </div>
+                </section>
+
+                <section className='flex justify-center items-center'>
                 </section>
 
                 {/* Features Section */}
