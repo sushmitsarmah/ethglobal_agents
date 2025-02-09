@@ -1,6 +1,7 @@
 import { Brain, BarChart3, Users, ArrowRight, Github, Twitter } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { WalletDefault } from '@coinbase/onchainkit/wallet';
+import { Button } from "@/components/ui/button"
 
 const Landing = () => {
     const navigate = useNavigate();
@@ -22,9 +23,11 @@ const Landing = () => {
                     <WalletDefault />
                     <a href="#features" className="hover:text-[#0DFDD7] transition-colors">Features</a>
                     <a href="#how-it-works" className="hover:text-[#0DFDD7] transition-colors">How it Works</a>
-                    <button onClick={launchApp} className="bg-[#0DFDD7] text-[#011627] px-6 py-2 rounded-lg font-semibold hover:bg-[#0DFDD7]/90 transition-colors">
+                    <Button
+                        onClick={launchApp}
+                        className="bg-[#0DFDD7] text-[#011627] hover:bg-[#0DFDD7]/90 transition-colors">
                         Launch App
-                    </button>
+                    </Button>
                 </div>
             </nav>
 
@@ -41,12 +44,14 @@ const Landing = () => {
                                 community-driven hedge fund platform on Web3.
                             </p>
                             <div className="flex space-x-4">
-                                <button onClick={launchApp} className="bg-[#0DFDD7] text-[#011627] px-8 py-3 rounded-lg font-semibold hover:bg-[#0DFDD7]/90 transition-colors flex items-center">
+                                <Button onClick={launchApp} className="bg-[#0DFDD7] text-[#011627] hover:bg-[#0DFDD7]/90 transition-colors flex items-center">
                                     Get Started <ArrowRight className="ml-2 w-5 h-5" />
-                                </button>
-                                <a href="#features" className="border border-[#0DFDD7] text-[#0DFDD7] px-8 py-3 rounded-lg font-semibold hover:bg-[#0DFDD7]/10 transition-colors">
-                                    Learn More
-                                </a>
+                                </Button>
+                                <Button variant="outline" className="border border-[#0DFDD7] text-[#0DFDD7] hover:bg-[#0DFDD7]/10 transition-colors">
+                                    <a href="#features">
+                                        Learn More
+                                    </a>
+                                </Button>
                             </div>
                         </div>
                         <div className="relative">
