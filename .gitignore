@@ -1,12 +1,1 @@
-*.ts
-dist
-!index.ts
-!character.ts
-.env
-node_modules
-dist/
-
-db.sqlite
-.idea
-
-model.gguf
+.DS_Store
