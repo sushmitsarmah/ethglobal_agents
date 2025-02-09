@@ -1,6 +1,7 @@
 import React from 'react';
 import { LayoutDashboard, LineChart, Vote, Brain, History, Settings, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 interface MenuItem {
     icon: React.ComponentType<{ className?: string }>;
@@ -9,7 +10,7 @@ interface MenuItem {
 };
 
 const menuItems: MenuItem[] = [
-    { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+    { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
     { icon: LineChart, label: 'AI Insights', path: '/insights' },
     { icon: Vote, label: 'Governance', path: '/governance' },
     { icon: Brain, label: 'Market Trends', path: '/trends' },
@@ -30,6 +31,7 @@ const SideBar: React.FC<SideBarProps> = ({
     setIsDarkMode,
 }) => {
     const [activeItem, setActiveItem] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     const handleItemClick = (item: MenuItem) => {
         setActiveItem(item.path);
@@ -39,7 +41,9 @@ const SideBar: React.FC<SideBarProps> = ({
         <aside className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
             <div className={`h-full px-3 py-4 overflow-y-auto ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border-r border-gray-200 dark:border-gray-700`}>
                 <div className="flex items-center justify-between mb-6 px-2">
-                <h1 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>AI Hedge Fund</h1>
+                <button onClick={() => navigate('/')}>
+                    <h1 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>PelicanTrade</h1>
+                </button>
                 <button
                     onClick={() => setIsDarkMode(!isDarkMode)}
                     className={`p-2 rounded-lg ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}
