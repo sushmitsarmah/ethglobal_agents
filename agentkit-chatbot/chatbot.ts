@@ -16,6 +16,7 @@ import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
 import * as fs from "fs";
 import * as readline from "readline";
+import { nillionElizaActionProvider } from "./actionProviders/nillion_action_provider";
 
 dotenv.config();
 
@@ -96,9 +97,11 @@ async function initializeAgent() {
       walletProvider,
       actionProviders: [
         wethActionProvider(),
-        pythActionProvider(),
         walletActionProvider(),
         erc20ActionProvider(),
+        nillionElizaActionProvider({
+          llm,
+        }),
         cdpApiActionProvider({
           apiKeyName: process.env.CDP_API_KEY_NAME,
           apiKeyPrivateKey: process.env.CDP_API_KEY_PRIVATE_KEY?.replace(/\\n/g, "\n"),
@@ -131,6 +134,9 @@ async function initializeAgent() {
         encourage them to implement it themselves using the CDP SDK + Agentkit, recommend they go to 
         docs.cdp.coinbase.com for more information. Be concise and helpful with your responses. Refrain from 
         restating your tools' descriptions unless it is explicitly requested.
+
+        If you need to create an Eliza character, use the NillionElizaProvider. Call the createElizaCharacter 
+        function with the character description and then save the data using saveElizaCharacterToNillion.
         `,
     });
 
